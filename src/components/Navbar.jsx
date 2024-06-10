@@ -4,6 +4,7 @@ const pages = [
   { label: "home", href: "/" },
   { label: "about", href: "/about" },
   { label: "sign in", href: "signin" },
+  { label: "sign up", href: "signup" },
 ];
 function Navbar() {
   return (
