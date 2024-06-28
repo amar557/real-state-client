@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { updatUser } from "../redeux/userslice";
+import { link } from "../firebase/api";
 
 function SignIn() {
   const [formdata, setFormData] = useState({});
@@ -19,7 +20,7 @@ function SignIn() {
       let { email, password } = formdata;
       if (!email || !password) throw new Error("every field is required");
       setLoading(true);
-      const data = await fetch("http://localhost:3000/api/userexist", {
+      const data = await fetch(`${link}/api/userexist`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formdata),

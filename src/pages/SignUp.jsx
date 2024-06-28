@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, json, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { updatUser } from "../redeux/userslice";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebase/firebase";
+import { link } from "../firebase/api";
 function SignUp() {
   const [formdata, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -44,7 +45,7 @@ function SignUp() {
       if (!username || !email || !password)
         throw new Error("every field is required");
       setLoading(true);
-      const data = await fetch("http://localhost:3000/api/createuser", {
+      const data = await fetch(`${link}/api/createuser`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formdata),

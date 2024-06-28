@@ -4,12 +4,11 @@ import { useSelector } from "react-redux";
 const pages = [
   { label: "home", href: "/" },
   { label: "about", href: "/about" },
-  // { label: "sign in", href: "signin" },
-  // { label: "sign up", href: "signup" },
 ];
 function Navbar() {
   const { rest } = useSelector((user) => user.userslice.user);
-  console.log(rest);
+  // console.log(rest);
+  // const rest = { username: "", email: "", password: "" };
   return (
     <div className="flex z-50  items-center bg-[#e2e8f0] py-4 justify-around shadow-md fixed w-full">
       <div>
@@ -37,7 +36,7 @@ function Navbar() {
             <NavLink to={page.href}>{page.label}</NavLink>
           </li>
         ))}
-        {rest ? (
+        {rest.username ? (
           <li className="capitalize text-base font-semibold">
             <NavLink to={"/profile"}>
               <img
@@ -54,9 +53,6 @@ function Navbar() {
           <>
             <li className="capitalize text-base font-semibold">
               <NavLink to={"/signin"}>sign in</NavLink>
-            </li>
-            <li className="capitalize text-base font-semibold">
-              <NavLink to={"/signup"}>sign up</NavLink>
             </li>
           </>
         )}
