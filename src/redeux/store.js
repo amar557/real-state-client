@@ -3,8 +3,9 @@ import userslice from "./userslice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import persistStore from "redux-persist/es/persistStore";
+import lists from "./list.slice";
 // import { version } from "react";
-const rootReducer = combineReducers({ userslice });
+const rootReducer = combineReducers({ userslice, lists });
 const persistConfig = {
   key: "root",
   version: 1,

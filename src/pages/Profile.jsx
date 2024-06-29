@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { app } from "../firebase/firebase";
 import { updatUser } from "../redeux/userslice";
 import { link } from "../firebase/api";
+import { getAllItems } from "../redeux/Asynchronous";
+import ItemsList from "../components/ItemsList";
 function Profile() {
   const [file, setFile] = useState(null);
   const dispatch = useDispatch();
@@ -12,6 +14,8 @@ function Profile() {
   const [downloadedfile, setDownloadedfile] = useState(null);
   const { rest } = useSelector((user) => user.userslice.user);
   const refer = useRef();
+  // const dispatch =useDispatch()
+  const userId = useSelector((user) => user.userslice.user.rest._id);
   const navigate = useNavigate();
   function handleFormdata(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -28,7 +32,6 @@ function Profile() {
     }
   }
   async function handleSubmitForm() {
-    console.log(rest._id);
     const request = await fetch(`${link}/api/update/${rest._id}`, {
       method: "POST",
       headers: {
@@ -127,9 +130,13 @@ function Profile() {
           sign out
         </span>
       </p>
-      <Link className="text-center text-green-700 capitalize mt-8">
+      <button
+        onClick={() => dispatch(getAllItems(userId))}
+        className="text-center text-green-700 capitalize mt-8"
+      >
         show listing
-      </Link>
+      </button>
+      <ItemsList />
     </div>
   );
 }

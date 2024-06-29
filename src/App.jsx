@@ -7,10 +7,11 @@ import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import { useSelector } from "react-redux";
 import CreateListing from "./pages/CreateListing";
+import ListPage from "./pages/ListPage";
 
 function App() {
   const { rest } = useSelector((user) => user.userslice.user);
-  console.log(rest);
+
   // const rest = { username: "", email: "", password: "" };
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="createListing" element={<CreateListing />} />
+            <Route path="listitem/:id" element={<ListPage />} />
             <Route
               path="profile"
               element={
