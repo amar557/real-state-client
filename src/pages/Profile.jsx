@@ -76,7 +76,7 @@ function Profile() {
       <img
         src={downloadedfile || rest.avatar}
         alt=""
-        className="rounded-full mb-8 h-20 w-20"
+        className="rounded-full mb-8 h-20 w-20 object-cover"
         onClick={() => refer.current.click()}
       />
       <input

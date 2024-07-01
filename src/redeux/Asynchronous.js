@@ -10,3 +10,11 @@ export const getAllItems = createAsyncThunk("list", async function (id) {
   const data = await res.json();
   return data;
 });
+export const updatingItem = createAsyncThunk("list", async function (id) {
+  const res = await fetch(`${link}/api/UpdateItem/${id}`, {
+    method: "POST",
+  });
+  const data = await res.json();
+  console.log(data);
+  // return data;
+});

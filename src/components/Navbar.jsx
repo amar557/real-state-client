@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
 import { useSelector } from "react-redux";
 const pages = [
@@ -11,14 +11,14 @@ function Navbar() {
   // const rest = { username: "", email: "", password: "" };
   return (
     <div className="flex z-50  items-center bg-[#e2e8f0] py-4 justify-around shadow-md fixed w-full">
-      <div>
+      <Link to="/">
         <span className="font-bold tracking-wider text-2xl  capitalize text-slate-500">
           real
         </span>
         <span className="font-bold tracking-wider text-2xl  capitalize text-slate-700">
           state
         </span>
-      </div>
+      </Link>
       <div className="flex bg-[#f1f5f9] px-2 py-1 rounded-md w-1/5 items-center justify-between ">
         <input
           type="text"
@@ -45,7 +45,7 @@ function Navbar() {
                   "https://lh3.googleusercontent.com/a/ACg8ocKZsQn9xjvbWtBI026S5XeAwK1r-1oI9X7RBflGqhR5nxfgzQ=s96-c"
                 }
                 alt="profile pic"
-                className="h-10 w-10 rounded-full"
+                className="h-10 w-10 rounded-full object-cover"
               />
             </NavLink>
           </li>

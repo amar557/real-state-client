@@ -1,8 +1,21 @@
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { link } from "../firebase/api";
+import { deleteUserItem } from "../redeux/list.slice";
 function ItemsList() {
   const { items, loading } = useSelector((e) => e.lists);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleDeletItem = async (id) => {
+    const items = await fetch(`${link}/api/deleteUserItem/${id}`, {
+      method: "DELETE",
+    });
+    const res = await items.json();
+    if (items.ok) {
+      dispatch(deleteUserItem(id));
+    }
+    console.log(res);
+  };
   return (
     <div className="w-1/3">
       {loading ? (
@@ -26,8 +39,18 @@ function ItemsList() {
               {item.name}
             </Link>
             <div className="flex flex-col uppercase ">
-              <button className="text-green-700 uppercase">edit</button>
-              <button className="text-red-700 uppercase">delete</button>
+              <button
+                className="text-green-700 uppercase"
+                onClick={() => navigate(`/updatelisting/${item._id}`)}
+              >
+                edit
+              </button>
+              <button
+                className="text-red-700 uppercase"
+                onClick={() => handleDeletItem(item._id)}
+              >
+                delete
+              </button>
             </div>
           </div>
         ))

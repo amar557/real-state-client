@@ -3,6 +3,11 @@ import { getAllItems } from "./Asynchronous";
 const lists = createSlice({
   name: "list",
   initialState: { loading: false, items: [], error: "" },
+  reducers: {
+    deleteUserItem: (state, action) => {
+      state.items = state.items.filter((item) => item._id !== action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getAllItems.pending, (state) => {
       state.loading = true;
@@ -17,3 +22,4 @@ const lists = createSlice({
   },
 });
 export default lists.reducer;
+export const { deleteUserItem } = lists.actions;

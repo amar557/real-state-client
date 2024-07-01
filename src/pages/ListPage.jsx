@@ -11,6 +11,7 @@ function ListPage() {
   const param = useParams();
   const [loading, setLoading] = useState(false);
   const [resData, setResData] = useState({});
+  console.log(resData);
   useEffect(() => {
     const getItemData = async function () {
       setLoading(true);
@@ -27,9 +28,7 @@ function ListPage() {
 
   return (
     <>
-      {!resData.name ? (
-        "loading"
-      ) : (
+      {resData && resData.name ? (
         <div>
           <div>
             <img
@@ -44,7 +43,7 @@ function ListPage() {
             </p>
             <p className="flex items-center justify-start gap-2 text-sm mb-3 font-medium">
               <FaLocationDot className="text-green-900" />
-              <span>456 Serenity Lane, Meadowville</span>
+              <span>{resData.address}</span>
             </p>
             <div className="flex gap-3 ">
               <button className="bg-red-900 text-white rounded-md py-1  capitalize w-full max-w-[200px]">
@@ -76,11 +75,13 @@ function ListPage() {
                 <span>{resData.furnished ? "furnished" : "not furnished"}</span>
               </span>
             </div>
-            <button className="bg-slate-700 w-full py-2 text-white  uppercase rounded-lg">
+            <button className="bg-slate-700 w-full py-2 text-white  uppercase rounded-lg mb-10">
               contact landlord
             </button>
           </div>
         </div>
+      ) : (
+        <p>loading</p>
       )}
     </>
   );
