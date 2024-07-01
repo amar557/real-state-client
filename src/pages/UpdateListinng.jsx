@@ -102,7 +102,7 @@ function UpdateListinng() {
         const url = await getDownloadURL(uploadTask.ref);
         urls.push(url);
       }
-      setFormData({ ...formData, imageUrls: urls });
+      setFormData({ ...formData, imageUrls: [...formData.imageUrls, urls] });
       setUploading(false);
     } else {
       setErr("images should be less than 6 for single list");
@@ -312,7 +312,7 @@ function UpdateListinng() {
             onClick={(e) => handleSubmitForm(e)}
             disabled={uploading}
           >
-            create listing
+            update listing
           </button>
           {formError && <p className="text-red-700 mb-3">{formError}</p>}
         </div>
