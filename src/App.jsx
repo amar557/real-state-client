@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import CreateListing from "./pages/CreateListing";
 import ListPage from "./pages/ListPage";
 import UpdateListinng from "./pages/UpdateListinng";
+import GSearchResult from "./pages/GSearchResult";
 
 function App() {
   const { rest } = useSelector((user) => user.userslice.user);
@@ -23,6 +24,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="createListing" element={<CreateListing />} />
             <Route path="listitem/:id" element={<ListPage />} />
+            <Route path="search" element={<GSearchResult />} />
             <Route path="updatelisting/:id" element={<UpdateListinng />} />
             <Route
               path="profile"
