@@ -15,7 +15,11 @@ function PaginationCmp() {
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {swiperimages.map((img, i) => (
           <SwiperSlide key={i}>
-            <img src={img} alt="" className="w-full h-[80vh] object-cover" />
+            <img
+              src={img}
+              alt=""
+              className="w-full h-[60vh] md:h-[80vh] object-cover"
+            />
           </SwiperSlide>
         ))}
       </Swiper>

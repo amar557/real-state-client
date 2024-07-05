@@ -4,6 +4,8 @@ import { link } from "../firebase/api";
 import { Link, useParams } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaBed } from "react-icons/fa";
+import { useSelector } from "react-redux";
+
 import { FaBath } from "react-icons/fa";
 import { FaParking } from "react-icons/fa";
 import { FaChair } from "react-icons/fa6";
@@ -16,6 +18,7 @@ import { Navigation } from "swiper/modules";
 function ListPage() {
   const param = useParams();
   const [loading, setLoading] = useState(false);
+  const { rest } = useSelector((e) => e.userslice.user);
   const [isOpen, setIsOpen] = useState(false);
   const [resData, setResData] = useState({});
 
@@ -58,7 +61,7 @@ function ListPage() {
               ))}
             </Swiper>
           </div>
-          <div className="w-3/5 mx-auto">
+          <div className="lg:w-3/5 sm:w-10/12 w-11/12 md:w-3/4 mx-auto">
             <p className="py-3 text-2xl font-semibold">
               {resData.name} - $ {resData.regularPrice} / month
             </p>
@@ -80,7 +83,7 @@ function ListPage() {
               <span className="font-semibold ">Description: </span>
               <span>{resData.description}</span>
             </div>
-            <div className="text-green-900 flex items-center text-sm font-semibold capitalize gap-4 mb-3">
+            <div className="text-green-900 flex items-center text-sm font-semibold flex-wrap capitalize gap-4 mb-3">
               <span className="flex items-center  gap-1">
                 <FaBed />
                 <span>{resData.bathrooms} beds</span>
@@ -98,7 +101,7 @@ function ListPage() {
                 <span>{resData.furnished ? "furnished" : "not furnished"}</span>
               </span>
             </div>
-            {!isOpen && (
+            {!isOpen && rest._id !== resData.userRef && (
               <button
                 className="bg-slate-700 w-full py-2 text-white  uppercase rounded-lg mb-10"
                 onClick={() => handleMessage()}

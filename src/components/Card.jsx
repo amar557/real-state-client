@@ -14,7 +14,7 @@ function Card({ item }) {
           className=" hover:scale-105 transition-scale cursor-pointer duration-300 w-full h-full object-cover"
         />
       </div>
-      <div className="mt-6 px-3 pb-2 gap-2 flex flex-col  ">
+      <div className="mt-3 md:mt-6 px-3 pb-2 md:gap-2 gap-1 flex flex-col  ">
         <h3 className="text-base font-semibold">{item.name}</h3>
         <p className="text-xs flex items-center justify-start gap-1  text-[#14532d]">
           <MdLocationOn />
