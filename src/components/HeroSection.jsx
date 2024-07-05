@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function HeroSection() {
   return (
     <div className="w-11/12 sm:w-10/12 mx-auto min-h-[60vh] flex items-start justify-center flex-col">
@@ -11,9 +13,9 @@ function HeroSection() {
         <br />
         Our expert support are always available.
       </p>
-      <button className="text-[#6240af] font-medium text-sm mt-3">
+      <Link to={"/search"} className="text-[#6240af] font-medium text-sm mt-3">
         let's start now...
-      </button>
+      </Link>
     </div>
   );
 }

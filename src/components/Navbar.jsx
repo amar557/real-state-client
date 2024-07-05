@@ -55,7 +55,7 @@ function Navbar() {
             <NavLink to={page.href}>{page.label}</NavLink>
           </li>
         ))}
-        {rest.username ? (
+        {rest._id ? (
           <li className="capitalize text-base font-semibold">
             <NavLink to={"/profile"}>
               <img

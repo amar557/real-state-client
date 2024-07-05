@@ -13,7 +13,7 @@ import GSearchResult from "./pages/GSearchResult";
 
 function App() {
   const { rest } = useSelector((user) => user.userslice.user);
-
+  console.log(rest._id);
   // const rest = { username: "", email: "", password: "" };
   return (
     <>
@@ -28,9 +28,7 @@ function App() {
             <Route path="updatelisting/:id" element={<UpdateListinng />} />
             <Route
               path="profile"
-              element={
-                rest.username ? <Profile /> : <Navigate to={"/signin"} />
-              }
+              element={rest._id ? <Profile /> : <Navigate to={"/signin"} />}
             />
             <Route path="signin" element={<SignIn />} />
             <Route path="signup" element={<SignUp />} />

@@ -2,42 +2,20 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { updatUser } from "../redeux/userslice";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "../firebase/firebase";
+
 import { link } from "../firebase/api";
+import SignInwithGoogleBtn from "../components/SignInwithGoogleBtn";
 function SignUp() {
   const [formdata, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const handleInputs = function (e) {
     const name = e.target.name;
     const value = e.target.value;
     setFormData({ ...formdata, [name]: value });
   };
-  const handleRegisterWithGoogle = async () => {
-    const provider = new GoogleAuthProvider();
-    const userdata = await signInWithPopup(auth, provider);
 
-    if (userdata) {
-      try {
-        const data = await fetch("http://localhost:3000/api/loginwithgoogle", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            username: userdata.user.displayName,
-            email: userdata.user.email,
-            avatar: userdata.user.photoURL,
-          }),
-        });
-        const jsondata = await data.json();
-        dispatch(updatUser(jsondata));
-        navigate("/");
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
   const submitData = async function (e) {
     e.preventDefault();
     try {
@@ -63,7 +41,7 @@ function SignUp() {
   };
 
   return (
-    <div className="flex items-center justify-center flex-col ">
+    <div className="flex items-center justify-center flex-col lg:w-1/3 mx-auto md:w-1/2 w-10/12">
       <h1 className="text-3xl font-semibold text-center capitalize mb-7">
         sign up
       </h1>
@@ -73,7 +51,7 @@ function SignUp() {
         id="username1"
         placeholder="username"
         value={formdata.username}
-        className="border rounded-lg  outline-none text-sm w-1/3   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
+        className="border rounded-lg  outline-none text-sm w-full   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
         onChange={handleInputs}
       />
       <input
@@ -83,7 +61,7 @@ function SignUp() {
         placeholder="email"
         value={formdata.email}
         onChange={handleInputs}
-        className="border rounded-lg outline-none text-sm w-1/3   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
+        className="border rounded-lg outline-none text-sm w-full   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
       />
       <input
         type="password"
@@ -92,7 +70,7 @@ function SignUp() {
         id="password1"
         value={formdata.password}
         placeholder="password"
-        className="border rounded-lg outline-none text-sm w-1/3   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
+        className="border rounded-lg outline-none text-sm w-full   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
       />
       <input
         type="button"
@@ -101,18 +79,10 @@ function SignUp() {
         onClick={submitData}
         value={loading ? `loading...` : `signup`}
         placeholder="username"
-        className="border cursor-pointer text-white rounded-lg outline-none text-sm w-1/3   px-3 py-3 mb-2 uppercase bg-[#334155] "
+        className="border cursor-pointer text-white rounded-lg outline-none text-sm w-full   px-3 py-3 mb-2 uppercase bg-[#334155] "
       />
-      <input
-        type="button"
-        name=""
-        onClick={handleRegisterWithGoogle}
-        id=""
-        value="continue with google "
-        placeholder="username"
-        className="border rounded-lg cursor-pointer text-white outline-none text-sm w-1/3   px-3 py-3 mb-2 uppercase bg-[#b91c1c] "
-      />
-      <p className="w-1/3 first-letter:uppercase">
+      <SignInwithGoogleBtn />
+      <p className="w-full first-letter:uppercase">
         have an account?
         <span className="text-blue-400 ms-2">
           <Link to="/signin" className="">

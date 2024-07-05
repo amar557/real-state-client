@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { updatUser } from "../redeux/userslice";
 import { link } from "../firebase/api";
+import SignInwithGoogleBtn from "../components/SignInwithGoogleBtn";
 
 function SignIn() {
   const [formdata, setFormData] = useState({});
@@ -39,7 +40,7 @@ function SignIn() {
     }
   };
   return (
-    <div className="flex items-center justify-center flex-col ">
+    <div className="flex items-center justify-center flex-col lg:w-1/3 mx-auto md:w-1/2 w-10/12">
       <h1 className="text-3xl font-semibold text-center capitalize mb-7">
         sign in
       </h1>
@@ -51,7 +52,7 @@ function SignIn() {
         placeholder="email"
         value={formdata.email}
         onChange={handleInputs}
-        className="border rounded-lg outline-none text-sm w-1/3   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
+        className="border rounded-lg outline-none text-sm w-full   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
       />
       <input
         type="password"
@@ -60,7 +61,7 @@ function SignIn() {
         id="password1"
         value={formdata.password}
         placeholder="password"
-        className="border rounded-lg outline-none text-sm w-1/3   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
+        className="border rounded-lg outline-none text-sm w-full   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
       />
       <input
         type="button"
@@ -69,17 +70,10 @@ function SignIn() {
         onClick={submitData}
         value={loading ? `loading...` : `signin`}
         placeholder="username"
-        className="border cursor-pointer text-white rounded-lg outline-none text-sm w-1/3   px-3 py-3 mb-2 uppercase bg-[#334155] "
+        className="border cursor-pointer text-white rounded-lg outline-none text-sm w-full   px-3 py-3 mb-2 uppercase bg-[#334155] "
       />
-      <input
-        type="button"
-        name=""
-        id=""
-        value="continue with google "
-        placeholder="username"
-        className="border rounded-lg cursor-pointer text-white outline-none text-sm w-1/3   px-3 py-3 mb-2 uppercase bg-[#b91c1c] "
-      />
-      <p className="w-1/3 first-letter:uppercase">
+      <SignInwithGoogleBtn />
+      <p className="w-full first-letter:uppercase">
         have an account?
         <span className="text-blue-400 ms-2">
           <Link to="/signup" className="">
