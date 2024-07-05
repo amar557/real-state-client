@@ -17,7 +17,7 @@ function ItemsList() {
     console.log(res);
   };
   return (
-    <div className="w-1/3">
+    <div className="w-full ">
       {loading ? (
         <p>loading ...</p>
       ) : (
@@ -40,13 +40,13 @@ function ItemsList() {
             </Link>
             <div className="flex flex-col uppercase ">
               <button
-                className="text-green-700 uppercase"
+                className="text-green-700 uppercase text-sm sm:text-base"
                 onClick={() => navigate(`/updatelisting/${item._id}`)}
               >
                 edit
               </button>
               <button
-                className="text-red-700 uppercase"
+                className="text-red-700 uppercase md:text-base text-sm"
                 onClick={() => handleDeletItem(item._id)}
               >
                 delete

@@ -63,7 +63,7 @@ function Profile() {
   }
 
   return (
-    <div className="flex items-center justify-center flex-col ">
+    <div className="flex items-center justify-center flex-col sm:w-3/4 w-11/12 md:w-2/5 mdl:w-1/3 mx-auto ">
       <h1 className="text-3xl font-semibold text-center capitalize mb-7">
         profile
       </h1>
@@ -86,7 +86,7 @@ function Profile() {
         placeholder="username"
         defaultValue={rest.username}
         onChange={handleFormdata}
-        className="border rounded-lg outline-none text-sm w-1/3   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
+        className="border rounded-lg outline-none text-sm w-full   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
       />
       <input
         type="text"
@@ -95,7 +95,7 @@ function Profile() {
         placeholder="email"
         defaultValue={rest.email}
         onChange={handleFormdata}
-        className="border rounded-lg outline-none text-sm w-1/3   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
+        className="border rounded-lg outline-none text-sm w-full   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
       />
       <input
         type="password"
@@ -104,7 +104,7 @@ function Profile() {
         defaultValue=""
         placeholder="password"
         onChange={handleFormdata}
-        className="border rounded-lg outline-none text-sm w-1/3   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
+        className="border rounded-lg outline-none text-sm w-full   px-3 py-3 mb-2 placeholder:capitalize placeholder:text-sm placeholder:text-slate-500 "
       />
       <input
         type="button"
@@ -112,7 +112,7 @@ function Profile() {
         id=""
         value={"update"}
         onClick={handleSubmitForm}
-        className="border cursor-pointer text-white rounded-lg outline-none text-sm w-1/3   px-3 py-3 mb-2 uppercase bg-slate-700 "
+        className="border cursor-pointer text-white rounded-lg outline-none text-sm w-full   px-3 py-3 mb-2 uppercase bg-slate-700 "
       />
       <input
         type="button"
@@ -120,9 +120,9 @@ function Profile() {
         id=""
         value="create listing"
         onClick={() => navigate("/createlisting")}
-        className="border rounded-lg cursor-pointer text-white outline-none text-sm w-1/3   px-3 py-3 mb-2 uppercase bg-green-700 "
+        className="border rounded-lg cursor-pointer text-white outline-none text-sm w-full   px-3 py-3 mb-2 uppercase bg-green-700 "
       />
-      <p className="w-1/3 capitalize flex items-center justify-between text-red-500 mt-3">
+      <p className="w-full capitalize flex items-center justify-between text-red-500 mt-3">
         <span onClick={handleDeleteUser} className="cursor-pointer">
           delete account
         </span>

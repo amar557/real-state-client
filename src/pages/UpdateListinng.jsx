@@ -109,12 +109,15 @@ function UpdateListinng() {
     }
   };
   return (
-    <div className="w-3/5 mx-auto">
+    <div className="w-4/5 lg:w-4/6 mx-auto">
       <h1 className="text-center my-7 font-bold text-3xl capitalize">
         updatelisting
       </h1>
-      <form className="flex gap-4" onSubmit={(e) => handleSubmitForm(e)}>
-        <div className="flex flex-1 flex-col gap-4">
+      <form
+        className="flex gap-4 md:flex-row flex-col"
+        onSubmit={(e) => handleSubmitForm(e)}
+      >
+        <div className="flex grow-[2] shrink md:w-[50%] flex-col gap-4">
           <input
             type="text"
             name="name"
@@ -272,7 +275,7 @@ function UpdateListinng() {
             )}
           </div>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 md:w-[45%]">
           <p className="space-x-3 text-sm my-3">
             <span className="font-semibold">images</span>
             <span>The first image will be the cover (max 6)</span>

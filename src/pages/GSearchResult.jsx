@@ -54,8 +54,6 @@ function GSearchResult() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const url = new URLSearchParams(window.location.search);
-
-    console.log(sideFormData);
     url.set("searchTerm", sideFormData.searchTerm);
     url.set("furnished", sideFormData.furnished);
     url.set("parking", sideFormData.parking);
@@ -64,7 +62,6 @@ function GSearchResult() {
     url.set("sort", sideFormData.sort);
     url.set("type", sideFormData.type);
     const query = url.toString();
-    console.log(query);
     navigate(`/search?${query}`);
   };
 
@@ -77,7 +74,6 @@ function GSearchResult() {
     let order = url.get("order");
     let sort = url.get("sort");
     let type = url.get("type");
-    console.log(order, sort);
     if (searchTerm || furnished || parking || offer || order || sort || type) {
       setSideFormData({
         ...sideFormData,
@@ -94,7 +90,6 @@ function GSearchResult() {
     async function getData() {
       setLoading(true);
       const query = url.toString();
-
       const res = await fetch(`${link}/api/searchitem?${query}`, {
         method: "POST",
       });
@@ -106,22 +101,28 @@ function GSearchResult() {
   }, [window.location.search]);
 
   return (
-    <div className="flex">
+    <div className="flex md:flex-row flex-col">
       <div className="border-e-2 min-h-screen">
-        <form className="p-7 flex flex-col gap-5" onSubmit={handleSubmit}>
+        <form
+          className="p-3 sm:p-7 flex flex-col gap-5 "
+          onSubmit={handleSubmit}
+        >
           <div className="flex gap-3 items-center">
-            <label className="capitalize font-semibold"> search term</label>
+            <label className="capitalize font-semibold text-nowrap">
+              {" "}
+              search term
+            </label>
             <input
               type="text"
               placeholder="search..."
-              className="p-3 rounded-lg"
+              className="p-3 rounded-lg flex-1 max-w-[60%]"
               name=""
               id="searchTerm"
               value={sideFormData.searchTerm}
               onChange={handleChanges}
             />
           </div>
-          <div className="flex items-center gap-3 ">
+          <div className="flex items-start sm:items-center gap-3 ">
             <label className="font-semibold">type:</label>
             <div className="flex items-center gap-3 flex-wrap">
               <span className="flex items-center gap-3">
@@ -216,13 +217,17 @@ function GSearchResult() {
         <h1 className="capitalize pb-3 text-3xl font-semibold border-b flex-1 w-full">
           listing results:
         </h1>
-        <div>
+        <div className="flex flex-wrap gap-5">
           {loading ? (
             <p>loading...</p>
           ) : (
             listings.list &&
             listings?.list.length >= 1 &&
-            listings.list.map((item) => <Card item={item} />)
+            listings.list.map((item) => (
+              // <div className="md:w-[48%] ">
+              <Card item={item} />
+              // </div>
+            ))
           )}
         </div>
       </div>

@@ -1,7 +1,7 @@
 function HeroSection() {
   return (
-    <div className="w-10/12 mx-auto min-h-[60vh] flex items-start justify-center flex-col">
-      <h1 className="text-5xl font-bold first-letter:uppercase leading-[3.4rem]">
+    <div className="w-11/12 sm:w-10/12 mx-auto min-h-[60vh] flex items-start justify-center flex-col">
+      <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold first-letter:uppercase sm:leading-[3.4rem]">
         find your next <span>perfect</span>
         <br />
         place with ease
