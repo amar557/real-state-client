@@ -50,7 +50,7 @@ function CreateListing() {
         const url = await getDownloadURL(uploadTask.ref);
         urls.push(url);
       }
-      setFormData({ ...formData, imageUrls: [...formData.imageUrls, urls] });
+      setFormData({ ...formData, imageUrls: [...formData.imageUrls, ...urls] });
       setUploading(false);
     } else {
       setErr("images should be less than 6 for single list");
