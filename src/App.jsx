@@ -13,7 +13,7 @@ import GSearchResult from "./pages/GSearchResult";
 
 function App() {
   const { rest } = useSelector((user) => user.userslice.user);
-  console.log(rest._id);
+
   // const rest = { username: "", email: "", password: "" };
   return (
     <>

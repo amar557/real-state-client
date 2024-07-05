@@ -1,10 +1,10 @@
 import { MdLocationOn } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-function Card({ item }) {
+function SearcRCard({ item }) {
   const navigate = useNavigate();
   return (
     <div
-      className="lg:max-w-[30%] mdl:max-w-[31%] sm:max-w-[48%]  w-full bg-white rounded-lg overflow-hidden shadow-lg  cursor-pointer"
+      className="lg:w-[30%] mdl:w-[47%] md:w-[100%] w-full   sm:w-[48%] bg-white rounded-lg overflow-hidden shadow-lg  cursor-pointer"
       onClick={() => navigate(`/listItem/${item._id}`)}
     >
       <div className="h-[200px] sm:h-[220px] overflow-hidden">
@@ -34,4 +34,4 @@ function Card({ item }) {
   );
 }
 
-export default Card;
+export default SearcRCard;

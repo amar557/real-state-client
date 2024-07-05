@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { link } from "../firebase/api";
 import Card from "../components/Card";
+import SearcRCard from "../components/SearcRCard";
 function GSearchResult() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -102,7 +103,7 @@ function GSearchResult() {
 
   return (
     <div className="flex md:flex-row flex-col">
-      <div className="border-e-2 min-h-screen">
+      <div className="border-e-2 md:min-h-screen">
         <form
           className="p-3 sm:p-7 flex flex-col gap-5 "
           onSubmit={handleSubmit}
@@ -225,7 +226,7 @@ function GSearchResult() {
             listings?.list.length >= 1 &&
             listings.list.map((item) => (
               // <div className="md:w-[48%] ">
-              <Card item={item} />
+              <SearcRCard item={item} />
               // </div>
             ))
           )}
